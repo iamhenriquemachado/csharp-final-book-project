@@ -26,6 +26,10 @@ namespace BookLoanProject.Infrastructure
         public Loan GetActiveLoansByMember(int memberId)
         {
             var activeLoans = _loans.FirstOrDefault(l => l.MemberId == memberId);
+
+            if (activeLoans != null) { return activeLoans; }
+            return null;
+            
             
         }
 
