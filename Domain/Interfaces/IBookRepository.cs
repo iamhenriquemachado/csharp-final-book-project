@@ -9,11 +9,6 @@ namespace BookLoanProject.Domain.Interfaces
 {
     internal interface IBookRepository : IRepository<Book>
     {
-        List<Book> _books = new();
-        List<Book> Search(string keyword)
-        {
-            var foundBook = _books.Where(k => k.Name.Contains(keyword.ToLower())).ToList();
-            return foundBook;
-        }
+        Book Search(string keyword);
     }
 }
