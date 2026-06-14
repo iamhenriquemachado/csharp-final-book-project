@@ -8,15 +8,13 @@ namespace BookLoanProject.Domain.Exceptions
 {
     internal class BookNotAvailableException : Exception
     {
-        public int ViolatingRule { get; set; }
         public int RawLine { get; set; }
 
         public BookNotAvailableException(string message) : base(message) { }
 
-        public BookNotAvailableException(string message, int violatingRule, int rawLine) :
-                base($"Exception message: {message} | Violating Rule:{violatingRule} | RawLine: {rawLine}")
+        public BookNotAvailableException(string message,  int rawLine) :
+                base($"Exception message: {message}  RawLine: {rawLine}")
         {
-            ViolatingRule = violatingRule;
             RawLine = rawLine;
         }
     }
