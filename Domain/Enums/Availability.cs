@@ -9,6 +9,6 @@ namespace BookLoanProject.Domain.Enums
     public enum Availability
     {
         No,
-        Yes 
+        Yes
     }
 }
