@@ -9,6 +9,6 @@ namespace BookLoanProject.Domain.Interfaces
 {
     internal interface ILoanRepository : IRepository<Loan>
     {
-        Loan GetActiveLoansByMember(int memberId);
+        IReadOnlyList<Loan> GetActiveLoansByMember(int memberId);
     }
 }
