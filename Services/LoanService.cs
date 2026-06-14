@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookLoanProject.Domain.Exceptions;
+using BookLoanProject.Domain.Enums;
 
 namespace BookLoanProject.Services
 {
@@ -38,10 +39,25 @@ namespace BookLoanProject.Services
             var borrowQuantity = _loanRepository.GetActiveLoansByMember(memberId).Where(b => b.ReturnDate == null).Count();
 
 
-            if(borrowQuantity >= memberFound.GetLoanLimit())
+            if (borrowQuantity >= memberFound.GetLoanLimit())
             {
-                throw new
+                throw new LoanLimitExceededException($"Loan Limit exceeded for the member", memberId);
             }
+
+            bookFound.IsAvailable = Availability.Yes;
+
+            Loan loan = new Loan
+            {
+                BookId = bookId,
+                MemberId = memberId,
+                LoanDate = DateTime.Now, 
+                DueDate = DateTime.Now.AddDays(14), 
+                ReturnDate = null
+            };
+
+            _loanRepository.Add(loan);
         }
     }
 }
+
+
