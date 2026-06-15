@@ -57,6 +57,11 @@ namespace BookLoanProject.Services
 
             _loanRepository.Add(loan);
         }
+
+        public void ReturnBook(int loanId)
+        {
+
+        }
     }
 }
 
